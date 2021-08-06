@@ -44,6 +44,9 @@ import org.springframework.lang.Nullable;
  * @since 3.2.2
  * @see FileCopyUtils
  */
+/**
+ * 这里直接就禁用了StreamUtils的实例化，abstract，而不是通过私有无参构造函数，，
+ */
 public abstract class StreamUtils {
 
 	/**

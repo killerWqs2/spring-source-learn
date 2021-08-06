@@ -17,6 +17,7 @@
 package org.aopalliance.aop;
 
 /**
+ * spring aop 将aopalliance整合进来了，，
  * Tag interface for Advice. Implementations can be any type
  * of advice, such as Interceptors.
  *

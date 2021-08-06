@@ -17,22 +17,12 @@
 package org.springframework.beans.factory.support;
 
 import java.beans.PropertyDescriptor;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
+import java.lang.reflect.*;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 import java.security.PrivilegedActionException;
 import java.security.PrivilegedExceptionAction;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.function.Supplier;
@@ -151,7 +141,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 	 * Class objects. By default, only the BeanFactory interface is ignored.
 	 */
 	private final Set<Class<?>> ignoredDependencyInterfaces = new HashSet<>();
-
+ 
 	/**
 	 * The name of the currently created bean, for implicit dependency registration
 	 * on getBean etc invocations triggered from a user-specified Supplier callback.
@@ -2018,6 +2008,13 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 			Class<?> resolved = this.result.resolve();
 			boolean foundResult = resolved != null && resolved != Object.class;
 			return (foundResult ? this.result : ResolvableType.NONE);
+		}
+	}
+
+	public static void main(String[] args) {
+		TypeVariable<Class<HashMap>>[] typeParameters = HashMap.class.getTypeParameters();
+		for (TypeVariable<Class<HashMap>> typeParameter : typeParameters) {
+			System.out.println(typeParameter.getName());
 		}
 	}
 

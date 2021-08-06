@@ -549,7 +549,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 			// Prepare this context for refreshing.
 			prepareRefresh();
 
-			// Tell the subclass to refresh the internal bean factory.
+			// Tell the subclass to refresh the internal bean factory. refresh 内部 beanFactory
 			ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory();
 
 			// Prepare the bean factory for use in this context.
@@ -697,6 +697,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 
 		// BeanFactory interface not registered as resolvable type in a plain factory.
 		// MessageSource registered (and found for autowiring) as a bean.
+		// 有点好奇为什么不将这些放在singleton里面而是搞了个什么resolvableDependency 这个呢
 		beanFactory.registerResolvableDependency(BeanFactory.class, beanFactory);
 		beanFactory.registerResolvableDependency(ResourceLoader.class, this);
 		beanFactory.registerResolvableDependency(ApplicationEventPublisher.class, this);

@@ -37,7 +37,7 @@ import org.springframework.util.StringValueResolver;
  * implementations.
  *
  * @author Juergen Hoeller
- * @author Qimiao Chen
+ * @author Qimiao Chen 这是中国人吗？
  * @since 2.5.2
  */
 public class SimpleAliasRegistry implements AliasRegistry {
@@ -45,7 +45,7 @@ public class SimpleAliasRegistry implements AliasRegistry {
 	/** Logger available to subclasses. */
 	protected final Log logger = LogFactory.getLog(getClass());
 
-	/** Map from alias to canonical name. */
+	/** Map from alias to canonical name. 一直很好奇，spring bean factory 为什么总是喜欢使用ConcurrentHashMap来作为存储的 */
 	private final Map<String, String> aliasMap = new ConcurrentHashMap<>(16);
 
 
@@ -138,12 +138,14 @@ public class SimpleAliasRegistry implements AliasRegistry {
 		this.aliasMap.forEach((alias, registeredName) -> {
 			if (registeredName.equals(name)) {
 				result.add(alias);
+				// Mk: 别名的别名 （alias, alias）
 				retrieveAliases(alias, result);
 			}
 		});
 	}
 
 	/**
+	 * 这个方法是干啥的
 	 * Resolve all alias target names and aliases registered in this
 	 * registry, applying the given {@link StringValueResolver} to them.
 	 * <p>The value resolver may for example resolve placeholders
@@ -152,7 +154,9 @@ public class SimpleAliasRegistry implements AliasRegistry {
 	 */
 	public void resolveAliases(StringValueResolver valueResolver) {
 		Assert.notNull(valueResolver, "StringValueResolver must not be null");
+		// Qs: 这里为什么要加锁？？
 		synchronized (this.aliasMap) {
+			// Mk: 这个方法依旧是浅拷贝，，所以这里的目的就只是完成瞬间的复刻而已
 			Map<String, String> aliasCopy = new HashMap<>(this.aliasMap);
 			aliasCopy.forEach((alias, registeredName) -> {
 				String resolvedAlias = valueResolver.resolveStringValue(alias);

@@ -124,10 +124,9 @@ public interface BeanFactory {
 	 */
 	String FACTORY_BEAN_PREFIX = "&";
 
-
 	/**
 	 * Return an instance, which may be shared or independent, of the specified bean.
-	 * <p>This method allows a Spring BeanFactory to be used as a replacement for the
+	 * <p>This method allows a Spring BecontractSyncSwitchanFactory to be used as a replacement for the
 	 * Singleton or Prototype design pattern. Callers may retain references to
 	 * returned objects in the case of Singleton beans.
 	 * <p>Translates aliases back to the corresponding canonical bean name.
