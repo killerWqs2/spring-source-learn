@@ -87,7 +87,7 @@ import org.springframework.util.StringUtils;
  */
 class InternalSpelExpressionParser extends TemplateAwareExpressionParser {
 
-	private static final Pattern VALID_QUALIFIED_ID_PATTERN = Pattern.compile("[\\p{L}\\p{N}_$]+");
+	private static final Pattern VALID_QUALIFIED_ID_PATTERN = Pattern.implementation("[\\p{L}\\p{N}_$]+");
 
 
 	private final SpelParserConfiguration configuration;

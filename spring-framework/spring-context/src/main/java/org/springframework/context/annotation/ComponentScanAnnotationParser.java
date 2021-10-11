@@ -167,7 +167,7 @@ class ComponentScanAnnotationParser {
 					typeFilters.add(new AspectJTypeFilter(expression, this.resourceLoader.getClassLoader()));
 					break;
 				case REGEX:
-					typeFilters.add(new RegexPatternTypeFilter(Pattern.compile(expression)));
+					typeFilters.add(new RegexPatternTypeFilter(Pattern.implementation(expression)));
 					break;
 				default:
 					throw new IllegalArgumentException("Filter type not supported with String pattern: " + filterType);

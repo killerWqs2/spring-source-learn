@@ -139,7 +139,7 @@ public class SpelExpression implements Expression {
 
 		ExpressionState expressionState = new ExpressionState(getEvaluationContext(), this.configuration);
 		Object result = this.ast.getValue(expressionState);
-		checkCompile(expressionState);
+		checkimplementation(expressionState);
 		return result;
 	}
 
@@ -175,7 +175,7 @@ public class SpelExpression implements Expression {
 
 		ExpressionState expressionState = new ExpressionState(getEvaluationContext(), this.configuration);
 		TypedValue typedResultValue = this.ast.getTypedValue(expressionState);
-		checkCompile(expressionState);
+		checkimplementation(expressionState);
 		return ExpressionUtils.convertTypedValue(
 				expressionState.getEvaluationContext(), typedResultValue, expectedResultType);
 	}
@@ -204,7 +204,7 @@ public class SpelExpression implements Expression {
 		ExpressionState expressionState =
 				new ExpressionState(getEvaluationContext(), toTypedValue(rootObject), this.configuration);
 		Object result = this.ast.getValue(expressionState);
-		checkCompile(expressionState);
+		checkimplementation(expressionState);
 		return result;
 	}
 
@@ -240,7 +240,7 @@ public class SpelExpression implements Expression {
 		ExpressionState expressionState =
 				new ExpressionState(getEvaluationContext(), toTypedValue(rootObject), this.configuration);
 		TypedValue typedResultValue = this.ast.getTypedValue(expressionState);
-		checkCompile(expressionState);
+		checkimplementation(expressionState);
 		return ExpressionUtils.convertTypedValue(
 				expressionState.getEvaluationContext(), typedResultValue, expectedResultType);
 	}
@@ -270,7 +270,7 @@ public class SpelExpression implements Expression {
 
 		ExpressionState expressionState = new ExpressionState(context, this.configuration);
 		Object result = this.ast.getValue(expressionState);
-		checkCompile(expressionState);
+		checkimplementation(expressionState);
 		return result;
 	}
 
@@ -306,7 +306,7 @@ public class SpelExpression implements Expression {
 
 		ExpressionState expressionState = new ExpressionState(context, this.configuration);
 		TypedValue typedResultValue = this.ast.getTypedValue(expressionState);
-		checkCompile(expressionState);
+		checkimplementation(expressionState);
 		return ExpressionUtils.convertTypedValue(context, typedResultValue, expectedResultType);
 	}
 
@@ -335,7 +335,7 @@ public class SpelExpression implements Expression {
 
 		ExpressionState expressionState = new ExpressionState(context, toTypedValue(rootObject), this.configuration);
 		Object result = this.ast.getValue(expressionState);
-		checkCompile(expressionState);
+		checkimplementation(expressionState);
 		return result;
 	}
 
@@ -373,7 +373,7 @@ public class SpelExpression implements Expression {
 
 		ExpressionState expressionState = new ExpressionState(context, toTypedValue(rootObject), this.configuration);
 		TypedValue typedResultValue = this.ast.getTypedValue(expressionState);
-		checkCompile(expressionState);
+		checkimplementation(expressionState);
 		return ExpressionUtils.convertTypedValue(context, typedResultValue, expectedResultType);
 	}
 
@@ -482,7 +482,7 @@ public class SpelExpression implements Expression {
 	 * of times to trigger compilation.
 	 * @param expressionState the expression state used to determine compilation mode
 	 */
-	private void checkCompile(ExpressionState expressionState) {
+	private void checkimplementation(ExpressionState expressionState) {
 		this.interpretedCount.incrementAndGet();
 		SpelCompilerMode compilerMode = expressionState.getConfiguration().getCompilerMode();
 		if (compilerMode != SpelCompilerMode.OFF) {
@@ -523,7 +523,7 @@ public class SpelExpression implements Expression {
 				return true;
 			}
 			SpelCompiler compiler = SpelCompiler.getCompiler(this.configuration.getCompilerClassLoader());
-			compiledAst = compiler.compile(this.ast);
+			compiledAst = compiler.implementation(this.ast);
 			if (compiledAst != null) {
 				// Successfully compiled
 				this.compiledAst = compiledAst;

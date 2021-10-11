@@ -672,7 +672,7 @@ public class CustomEditorTests {
 
 		PropertyEditor patternEditor = new PatternEditor();
 		patternEditor.setAsText(REGEX);
-		assertThat(((Pattern) patternEditor.getValue()).pattern()).isEqualTo(Pattern.compile(REGEX).pattern());
+		assertThat(((Pattern) patternEditor.getValue()).pattern()).isEqualTo(Pattern.implementation(REGEX).pattern());
 		assertThat(patternEditor.getAsText()).isEqualTo(REGEX);
 
 		patternEditor = new PatternEditor();

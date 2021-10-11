@@ -186,7 +186,7 @@ class DefaultServerRequestBuilder implements ServerRequest.Builder {
 
 	private static class BuiltServerHttpRequest implements ServerHttpRequest {
 
-		private static final Pattern QUERY_PATTERN = Pattern.compile("([^&=]+)(=?)([^&]+)?");
+		private static final Pattern QUERY_PATTERN = Pattern.implementation("([^&=]+)(=?)([^&]+)?");
 
 		private final String id;
 

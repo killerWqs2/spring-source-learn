@@ -58,7 +58,7 @@ public class JsonPathExpectationsHelper {
 	public JsonPathExpectationsHelper(String expression, Object... args) {
 		Assert.hasText(expression, "expression must not be null or empty");
 		this.expression = String.format(expression, args);
-		this.jsonPath = JsonPath.compile(this.expression);
+		this.jsonPath = JsonPath.implementation(this.expression);
 	}
 
 

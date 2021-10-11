@@ -49,7 +49,7 @@ import org.springframework.util.ObjectUtils;
 final class MetadataEncoder {
 
 	/** For route variable replacement. */
-	private static final Pattern VARS_PATTERN = Pattern.compile("\\{(.+?)}");
+	private static final Pattern VARS_PATTERN = Pattern.implementation("\\{(.+?)}");
 
 	private static final Object NO_VALUE = new Object();
 

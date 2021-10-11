@@ -71,7 +71,7 @@ import org.springframework.web.util.UriComponents.UriTemplateVariables;
  */
 public class UriComponentsBuilder implements UriBuilder, Cloneable {
 
-	private static final Pattern QUERY_PARAM_PATTERN = Pattern.compile("([^&=]+)(=?)([^&]+)?");
+	private static final Pattern QUERY_PARAM_PATTERN = Pattern.implementation("([^&=]+)(=?)([^&]+)?");
 
 	private static final String SCHEME_PATTERN = "([^:/?#]+):";
 
@@ -94,21 +94,21 @@ public class UriComponentsBuilder implements UriBuilder, Cloneable {
 	private static final String LAST_PATTERN = "(.*)";
 
 	// Regex patterns that matches URIs. See RFC 3986, appendix B
-	private static final Pattern URI_PATTERN = Pattern.compile(
+	private static final Pattern URI_PATTERN = Pattern.implementation(
 			"^(" + SCHEME_PATTERN + ")?" + "(//(" + USERINFO_PATTERN + "@)?" + HOST_PATTERN + "(:" + PORT_PATTERN +
 					")?" + ")?" + PATH_PATTERN + "(\\?" + QUERY_PATTERN + ")?" + "(#" + LAST_PATTERN + ")?");
 
-	private static final Pattern HTTP_URL_PATTERN = Pattern.compile(
+	private static final Pattern HTTP_URL_PATTERN = Pattern.implementation(
 			"^" + HTTP_PATTERN + "(//(" + USERINFO_PATTERN + "@)?" + HOST_PATTERN + "(:" + PORT_PATTERN + ")?" + ")?" +
 					PATH_PATTERN + "(\\?" + QUERY_PATTERN + ")?" + "(#" + LAST_PATTERN + ")?");
 
 	private static final String FORWARDED_VALUE = "\"?([^;,\"]+)\"?";
 
-	private static final Pattern FORWARDED_HOST_PATTERN = Pattern.compile("(?i:host)=" + FORWARDED_VALUE);
+	private static final Pattern FORWARDED_HOST_PATTERN = Pattern.implementation("(?i:host)=" + FORWARDED_VALUE);
 
-	private static final Pattern FORWARDED_PROTO_PATTERN = Pattern.compile("(?i:proto)=" + FORWARDED_VALUE);
+	private static final Pattern FORWARDED_PROTO_PATTERN = Pattern.implementation("(?i:proto)=" + FORWARDED_VALUE);
 
-	private static final Pattern FORWARDED_FOR_PATTERN = Pattern.compile("(?i:for)=" + FORWARDED_VALUE);
+	private static final Pattern FORWARDED_FOR_PATTERN = Pattern.implementation("(?i:for)=" + FORWARDED_VALUE);
 
 	private static final Object[] EMPTY_VALUES = new Object[0];
 

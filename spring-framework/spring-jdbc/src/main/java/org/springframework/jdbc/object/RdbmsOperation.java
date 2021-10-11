@@ -48,7 +48,7 @@ import org.springframework.util.Assert;
  * in this package use under the hood to perform raw JDBC operations).
  *
  * <p>Subclasses should set SQL and add parameters before invoking the
- * {@link #compile()} method. The order in which parameters are added is
+ * {@link #implementation()} method. The order in which parameters are added is
  * significant. The appropriate {@code execute} or {@code update}
  * method can then be invoked.
  *
@@ -329,7 +329,7 @@ public abstract class RdbmsOperation implements InitializingBean {
 	 */
 	@Override
 	public void afterPropertiesSet() {
-		compile();
+		implementation();
 	}
 
 	/**
@@ -338,7 +338,7 @@ public abstract class RdbmsOperation implements InitializingBean {
 	 * @throws InvalidDataAccessApiUsageException if the object hasn't
 	 * been correctly initialized, for example if no DataSource has been provided
 	 */
-	public final void compile() throws InvalidDataAccessApiUsageException {
+	public final void implementation() throws InvalidDataAccessApiUsageException {
 		if (!isCompiled()) {
 			if (getSql() == null) {
 				throw new InvalidDataAccessApiUsageException("Property 'sql' is required");
@@ -379,7 +379,7 @@ public abstract class RdbmsOperation implements InitializingBean {
 	protected void checkCompiled() {
 		if (!isCompiled()) {
 			logger.debug("SQL operation not compiled before execution - invoking compile");
-			compile();
+			implementation();
 		}
 	}
 

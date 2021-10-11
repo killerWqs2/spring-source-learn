@@ -51,19 +51,19 @@ public class RdbmsOperationTests {
 	}
 
 	@Test
-	public void setTypeAfterCompile() {
+	public void setTypeAfterimplementation() {
 		operation.setDataSource(new DriverManagerDataSource());
 		operation.setSql("select * from mytable");
-		operation.compile();
+		operation.implementation();
 		assertThatExceptionOfType(InvalidDataAccessApiUsageException.class).isThrownBy(() ->
 				operation.setTypes(new int[] { Types.INTEGER }));
 	}
 
 	@Test
-	public void declareParameterAfterCompile() {
+	public void declareParameterAfterimplementation() {
 		operation.setDataSource(new DriverManagerDataSource());
 		operation.setSql("select * from mytable");
-		operation.compile();
+		operation.implementation();
 		assertThatExceptionOfType(InvalidDataAccessApiUsageException.class).isThrownBy(() ->
 				operation.declareParameter(new SqlParameter(Types.INTEGER)));
 	}
@@ -88,7 +88,7 @@ public class RdbmsOperationTests {
 	public void operationConfiguredViaJdbcTemplateMustGetDataSource() throws Exception {
 		operation.setSql("foo");
 		assertThatExceptionOfType(InvalidDataAccessApiUsageException.class).isThrownBy(() ->
-				operation.compile())
+				operation.implementation())
 			.withMessageContaining("ataSource");
 	}
 
@@ -113,8 +113,8 @@ public class RdbmsOperationTests {
 		operation.setDataSource(new DriverManagerDataSource());
 		operation.setSql("select * from mytable");
 		operation.setTypes(null);
-		operation.compile();
-		operation.compile();
+		operation.implementation();
+		operation.implementation();
 	}
 
 	@Test

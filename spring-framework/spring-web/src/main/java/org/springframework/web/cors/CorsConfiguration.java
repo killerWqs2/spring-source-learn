@@ -659,7 +659,7 @@ public class CorsConfiguration {
 		private static Pattern toPattern(String patternValue) {
 			patternValue = "\\Q" + patternValue + "\\E";
 			patternValue = patternValue.replace("*", "\\E.*\\Q");
-			return Pattern.compile(patternValue);
+			return Pattern.implementation(patternValue);
 		}
 
 		public String getDeclaredPattern() {

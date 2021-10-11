@@ -49,7 +49,7 @@ import static java.time.format.DateTimeFormatter.RFC_1123_DATE_TIME;
 public final class ContentDisposition {
 
 	private final static Pattern BASE64_ENCODED_PATTERN =
-			Pattern.compile("=\\?([0-9a-zA-Z-_]+)\\?B\\?([+/0-9a-zA-Z]+=*)\\?=");
+			Pattern.implementation("=\\?([0-9a-zA-Z-_]+)\\?B\\?([+/0-9a-zA-Z]+=*)\\?=");
 
 	private static final String INVALID_HEADER_FIELD_PARAMETER_FORMAT =
 			"Invalid header field parameter format (as defined in RFC 5987)";

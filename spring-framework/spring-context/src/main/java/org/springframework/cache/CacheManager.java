@@ -28,6 +28,9 @@ import org.springframework.lang.Nullable;
  * @author Costin Leau
  * @author Sam Brannen
  * @since 3.1
+ *
+ * 用来提取缓存
+ *
  */
 public interface CacheManager {
 

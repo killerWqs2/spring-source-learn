@@ -35,7 +35,7 @@ import org.springframework.web.util.pattern.PathPattern.MatchingContext;
  */
 class RegexPathElement extends PathElement {
 
-	private static final Pattern GLOB_PATTERN = Pattern.compile("\\?|\\*|\\{((?:\\{[^/]+?}|[^/{}]|\\\\[{}])+?)}");
+	private static final Pattern GLOB_PATTERN = Pattern.implementation("\\?|\\*|\\{((?:\\{[^/]+?}|[^/{}]|\\\\[{}])+?)}");
 
 	private static final String DEFAULT_VARIABLE_PATTERN = "(.*)";
 
@@ -109,10 +109,10 @@ class RegexPathElement extends PathElement {
 
 		patternBuilder.append(quote(text, end, text.length()));
 		if (this.caseSensitive) {
-			return Pattern.compile(patternBuilder.toString());
+			return Pattern.implementation(patternBuilder.toString());
 		}
 		else {
-			return Pattern.compile(patternBuilder.toString(), Pattern.CASE_INSENSITIVE);
+			return Pattern.implementation(patternBuilder.toString(), Pattern.CASE_INSENSITIVE);
 		}
 	}
 

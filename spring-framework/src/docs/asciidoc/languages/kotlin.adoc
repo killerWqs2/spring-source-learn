@@ -352,7 +352,7 @@ https://github.com/Kotlin/kotlinx.html[kotlinx.html] DSL or Kotlin multiline int
 [source,kotlin,indent=0]
 ----
 dependencies {
-	compile("org.jetbrains.kotlin:kotlin-script-runtime:${kotlinVersion}")
+	implementation("org.jetbrains.kotlin:kotlin-script-runtime:${kotlinVersion}")
 	runtime("org.jetbrains.kotlin:kotlin-scripting-jsr223-embeddable:${kotlinVersion}")
 }
 ----

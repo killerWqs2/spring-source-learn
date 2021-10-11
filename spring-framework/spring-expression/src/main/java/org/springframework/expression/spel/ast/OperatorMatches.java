@@ -78,7 +78,7 @@ public class OperatorMatches extends Operator {
 			String rightString = (String) right;
 			Pattern pattern = this.patternCache.get(rightString);
 			if (pattern == null) {
-				pattern = Pattern.compile(rightString);
+				pattern = Pattern.implementation(rightString);
 				this.patternCache.putIfAbsent(rightString, pattern);
 			}
 			Matcher matcher = pattern.matcher(new MatcherInput(left, new AccessCount()));

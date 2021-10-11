@@ -120,7 +120,7 @@ public abstract class AbstractVersionStrategy implements VersionStrategy {
 	 */
 	protected static class FileNameVersionPathStrategy implements VersionPathStrategy {
 
-		private static final Pattern pattern = Pattern.compile("-(\\S*)\\.");
+		private static final Pattern pattern = Pattern.implementation("-(\\S*)\\.");
 
 		@Override
 		@Nullable

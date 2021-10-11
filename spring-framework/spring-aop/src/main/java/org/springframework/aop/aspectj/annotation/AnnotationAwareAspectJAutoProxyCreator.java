@@ -66,7 +66,7 @@ public class AnnotationAwareAspectJAutoProxyCreator extends AspectJAwareAdvisorA
 	public void setIncludePatterns(List<String> patterns) {
 		this.includePatterns = new ArrayList<>(patterns.size());
 		for (String patternText : patterns) {
-			this.includePatterns.add(Pattern.compile(patternText));
+			this.includePatterns.add(Pattern.implementation(patternText));
 		}
 	}
 

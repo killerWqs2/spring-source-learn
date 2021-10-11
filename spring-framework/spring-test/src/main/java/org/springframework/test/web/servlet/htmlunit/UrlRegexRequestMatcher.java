@@ -42,7 +42,7 @@ public final class UrlRegexRequestMatcher implements WebRequestMatcher {
 
 
 	public UrlRegexRequestMatcher(String regex) {
-		this.pattern = Pattern.compile(regex);
+		this.pattern = Pattern.implementation(regex);
 	}
 
 	public UrlRegexRequestMatcher(Pattern pattern) {

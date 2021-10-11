@@ -5307,7 +5307,7 @@ data from the `t_actor` relation to an instance of the `Actor` class:
 		public ActorMappingQuery(DataSource ds) {
 			super(ds, "select id, first_name, last_name from t_actor where id = ?");
 			declareParameter(new SqlParameter("id", Types.INTEGER));
-			compile();
+			implementation();
 		}
 
 		@Override
@@ -5327,7 +5327,7 @@ data from the `t_actor` relation to an instance of the `Actor` class:
 
 		init {
 			declareParameter(SqlParameter("id", Types.INTEGER))
-			compile()
+			implementation()
 		}
 
 		override fun mapRow(rs: ResultSet, rowNumber: Int) = Actor(
@@ -5347,7 +5347,7 @@ create a `PreparedStatement`, so it may contain placeholders for any parameters 
 passed in during execution. You must declare each parameter by using the `declareParameter`
 method passing in an `SqlParameter`. The `SqlParameter` takes a name, and the JDBC type
 as defined in `java.sql.Types`. After you define all parameters, you can call the
-`compile()` method so that the statement can be prepared and later run. This class is
+`implementation()` method so that the statement can be prepared and later run. This class is
 thread-safe after it is compiled, so, as long as these instances are created when the DAO
 is initialized, they can be kept as instance variables and be reused. The following
 example shows how to define such a class:
@@ -5424,7 +5424,7 @@ The following example creates a custom update method named `execute`:
 			setSql("update customer set credit_rating = ? where id = ?");
 			declareParameter(new SqlParameter("creditRating", Types.NUMERIC));
 			declareParameter(new SqlParameter("id", Types.NUMERIC));
-			compile();
+			implementation();
 		}
 
 		/**
@@ -5452,7 +5452,7 @@ The following example creates a custom update method named `execute`:
 			sql = "update customer set credit_rating = ? where id = ?"
 			declareParameter(SqlParameter("creditRating", Types.NUMERIC))
 			declareParameter(SqlParameter("id", Types.NUMERIC))
-			compile()
+			implementation()
 		}
 
 		/**
@@ -5553,7 +5553,7 @@ The following listing shows our custom StoredProcedure class:
 				setFunction(true);
 				setSql(SQL);
 				declareParameter(new SqlOutParameter("date", Types.DATE));
-				compile();
+				implementation();
 			}
 
 			public Date execute() {
@@ -5592,7 +5592,7 @@ The following listing shows our custom StoredProcedure class:
 				isFunction = true
 				sql = SQL
 				declareParameter(SqlOutParameter("date", Types.DATE))
-				compile()
+				implementation()
 			}
 
 			fun execute(): Date {
@@ -5625,7 +5625,7 @@ Oracle REF cursors):
 			super(dataSource, SPROC_NAME);
 			declareParameter(new SqlOutParameter("titles", OracleTypes.CURSOR, new TitleMapper()));
 			declareParameter(new SqlOutParameter("genres", OracleTypes.CURSOR, new GenreMapper()));
-			compile();
+			implementation();
 		}
 
 		public Map<String, Object> execute() {
@@ -5652,7 +5652,7 @@ Oracle REF cursors):
 		init {
 			declareParameter(SqlOutParameter("titles", OracleTypes.CURSOR, TitleMapper()))
 			declareParameter(SqlOutParameter("genres", OracleTypes.CURSOR, GenreMapper()))
-			compile()
+			implementation()
 		}
 
 		fun execute(): Map<String, Any> {
@@ -5761,7 +5761,7 @@ delegate to the untyped `execute(Map)` method in the superclass, as the followin
 			super(dataSource, SPROC_NAME);
 			declareParameter(new SqlParameter(CUTOFF_DATE_PARAM, Types.DATE);
 			declareParameter(new SqlOutParameter("titles", OracleTypes.CURSOR, new TitleMapper()));
-			compile();
+			implementation();
 		}
 
 		public Map<String, Object> execute(Date cutoffDate) {
@@ -5792,7 +5792,7 @@ delegate to the untyped `execute(Map)` method in the superclass, as the followin
 		init {
 			declareParameter(SqlParameter(CUTOFF_DATE_PARAM, Types.DATE))
 			declareParameter(SqlOutParameter("titles", OracleTypes.CURSOR, TitleMapper()))
-			compile()
+			implementation()
 		}
 
 		fun execute(cutoffDate: Date) = super.execute(

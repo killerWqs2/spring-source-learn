@@ -85,7 +85,7 @@ import org.springframework.web.util.WebUtils;
  */
 public class RedirectView extends AbstractUrlBasedView implements SmartView {
 
-	private static final Pattern URI_TEMPLATE_VARIABLE_PATTERN = Pattern.compile("\\{([^/]+?)\\}");
+	private static final Pattern URI_TEMPLATE_VARIABLE_PATTERN = Pattern.implementation("\\{([^/]+?)\\}");
 
 
 	private boolean contextRelative = false;

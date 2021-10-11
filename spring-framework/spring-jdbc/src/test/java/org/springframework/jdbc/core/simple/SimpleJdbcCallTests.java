@@ -205,7 +205,7 @@ class SimpleJdbcCallTests {
 	void correctFunctionStatement() throws Exception {
 		initializeAddInvoiceWithMetaData(true);
 		SimpleJdbcCall adder = new SimpleJdbcCall(dataSource).withFunctionName("add_invoice");
-		adder.compile();
+		adder.implementation();
 		verifyStatement(adder, "{? = call ADD_INVOICE(?, ?)}");
 	}
 
@@ -213,7 +213,7 @@ class SimpleJdbcCallTests {
 	void correctFunctionStatementNamed() throws Exception {
 		initializeAddInvoiceWithMetaData(true);
 		SimpleJdbcCall adder = new SimpleJdbcCall(dataSource).withNamedBinding().withFunctionName("add_invoice");
-		adder.compile();
+		adder.implementation();
 		verifyStatement(adder, "{? = call ADD_INVOICE(AMOUNT => ?, CUSTID => ?)}");
 	}
 
@@ -221,7 +221,7 @@ class SimpleJdbcCallTests {
 	void correctProcedureStatementNamed() throws Exception {
 		initializeAddInvoiceWithMetaData(false);
 		SimpleJdbcCall adder = new SimpleJdbcCall(dataSource).withNamedBinding().withProcedureName("add_invoice");
-		adder.compile();
+		adder.implementation();
 		verifyStatement(adder, "{call ADD_INVOICE(AMOUNT => ?, CUSTID => ?, NEWID => ?)}");
 	}
 
@@ -254,7 +254,7 @@ class SimpleJdbcCallTests {
 			.willThrow(new SQLException("error with DATA_TYPE for column 3"));
 
 		SimpleJdbcCall adder = new SimpleJdbcCall(dataSource).withNamedBinding().withProcedureName("add_invoice");
-		adder.compile();
+		adder.implementation();
 		// If an exception were not thrown for column 3, we would expect:
 		// {call ADD_INVOICE(AMOUNT => ?, CUSTID => ?, NEWID => ?)}
 		verifyStatement(adder, "{call ADD_INVOICE(AMOUNT => ?, CUSTID => ?)}");

@@ -161,7 +161,7 @@ public class SqlUpdateTests {
 					declareParameter(new SqlParameter(Types.NUMERIC));
 					declareParameter(new SqlParameter(Types.DECIMAL));
 				}
-				compile();
+				implementation();
 			}
 
 			public int run(int performanceId, int type) {
@@ -303,7 +303,7 @@ public class SqlUpdateTests {
 		public Updater() {
 			setSql(UPDATE);
 			setDataSource(dataSource);
-			compile();
+			implementation();
 		}
 
 		public int run() {
@@ -318,7 +318,7 @@ public class SqlUpdateTests {
 			setSql(UPDATE_INT);
 			setDataSource(dataSource);
 			declareParameter(new SqlParameter(Types.NUMERIC));
-			compile();
+			implementation();
 		}
 
 		public int run(int performanceId) {
@@ -334,7 +334,7 @@ public class SqlUpdateTests {
 			setDataSource(dataSource);
 			declareParameter(new SqlParameter(Types.NUMERIC));
 			declareParameter(new SqlParameter(Types.NUMERIC));
-			compile();
+			implementation();
 		}
 
 		public int run(int performanceId, int type) {
@@ -349,7 +349,7 @@ public class SqlUpdateTests {
 			setSql(UPDATE_STRING);
 			setDataSource(dataSource);
 			declareParameter(new SqlParameter(Types.VARCHAR));
-			compile();
+			implementation();
 		}
 
 		public int run(String name) {
@@ -367,7 +367,7 @@ public class SqlUpdateTests {
 			declareParameter(new SqlParameter(Types.NUMERIC, 2));
 			declareParameter(new SqlParameter(Types.VARCHAR));
 			declareParameter(new SqlParameter(Types.BOOLEAN));
-			compile();
+			implementation();
 		}
 
 		public int run(int performanceId, int type, String name, boolean confirmed) {
@@ -383,7 +383,7 @@ public class SqlUpdateTests {
 			setDataSource(dataSource);
 			declareParameter(new SqlParameter(Types.VARCHAR));
 			setReturnGeneratedKeys(true);
-			compile();
+			implementation();
 		}
 
 		public int run(String name, KeyHolder generatedKeyHolder) {
@@ -397,7 +397,7 @@ public class SqlUpdateTests {
 		public ConstructorUpdater() {
 			super(dataSource, UPDATE_OBJECTS,
 					new int[] {Types.NUMERIC, Types.NUMERIC, Types.VARCHAR, Types.BOOLEAN });
-			compile();
+			implementation();
 		}
 
 		public int run(int performanceId, int type, String name, boolean confirmed) {
@@ -412,7 +412,7 @@ public class SqlUpdateTests {
 			setSql(UPDATE);
 			setDataSource(dataSource);
 			setMaxRowsAffected(5);
-			compile();
+			implementation();
 		}
 
 		public int run() {
@@ -427,7 +427,7 @@ public class SqlUpdateTests {
 			setSql(UPDATE);
 			setDataSource(dataSource);
 			setRequiredRowsAffected(3);
-			compile();
+			implementation();
 		}
 
 		public int run() {

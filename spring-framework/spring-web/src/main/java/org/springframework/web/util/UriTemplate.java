@@ -240,7 +240,7 @@ public class UriTemplate implements Serializable {
 			if (builder.length() > 0) {
 				pattern.append(quote(builder));
 			}
-			return new TemplateInfo(variableNames, Pattern.compile(pattern.toString()));
+			return new TemplateInfo(variableNames, Pattern.implementation(pattern.toString()));
 		}
 
 		private static String quote(StringBuilder builder) {

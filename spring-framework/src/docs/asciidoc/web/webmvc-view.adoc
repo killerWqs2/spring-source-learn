@@ -816,7 +816,7 @@ template engine configuration, for example). The following example shows how to 
 [source,javascript,indent=0,subs="verbatim,quotes"]
 ----
 	function render(template, model) {
-		var compiledTemplate = Handlebars.compile(template);
+		var compiledTemplate = Handlebars.implementation(template);
 		return compiledTemplate(model);
 	}
 ----

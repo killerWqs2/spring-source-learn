@@ -118,7 +118,7 @@ public class SqlQueryTests  {
 		};
 		query.setDataSource(dataSource);
 		query.setSql(SELECT_ID);
-		query.compile();
+		query.implementation();
 		List<Integer> list = query.execute();
 
 		assertThat(list).isEqualTo(Arrays.asList(1));
@@ -139,7 +139,7 @@ public class SqlQueryTests  {
 		query.setSql(SELECT_ID_WHERE);
 		query.declareParameter(new SqlParameter(COLUMN_NAMES[0], COLUMN_TYPES[0]));
 		query.declareParameter(new SqlParameter(COLUMN_NAMES[1], COLUMN_TYPES[1]));
-		query.compile();
+		query.implementation();
 
 		assertThatExceptionOfType(InvalidDataAccessApiUsageException.class).isThrownBy(
 				query::execute);
@@ -157,7 +157,7 @@ public class SqlQueryTests  {
 		query.setSql(SELECT_ID_WHERE);
 		query.declareParameter(new SqlParameter(COLUMN_NAMES[0], COLUMN_TYPES[0]));
 		query.declareParameter(new SqlParameter(COLUMN_NAMES[1], COLUMN_TYPES[1]));
-		query.compile();
+		query.implementation();
 
 		assertThatExceptionOfType(InvalidDataAccessApiUsageException.class).isThrownBy(() ->
 				query.executeByNamedParam(Collections.singletonMap(COLUMN_NAMES[0], "value")));
@@ -202,7 +202,7 @@ public class SqlQueryTests  {
 				super(ds, SELECT_ID_WHERE);
 				declareParameter(new SqlParameter(Types.NUMERIC));
 				declareParameter(new SqlParameter(Types.NUMERIC));
-				compile();
+				implementation();
 			}
 
 			@Override
@@ -242,7 +242,7 @@ public class SqlQueryTests  {
 			public CustomerQuery(DataSource ds) {
 				super(ds, SELECT_ID_FORENAME_WHERE);
 				declareParameter(new SqlParameter(Types.VARCHAR));
-				compile();
+				implementation();
 			}
 
 			@Override
@@ -288,7 +288,7 @@ public class SqlQueryTests  {
 				super(ds, SELECT_ID_WHERE);
 				declareParameter(new SqlParameter(COLUMN_NAMES[0], COLUMN_TYPES[0]));
 				declareParameter(new SqlParameter(COLUMN_NAMES[1], COLUMN_TYPES[1]));
-				compile();
+				implementation();
 			}
 
 			@Override
@@ -335,7 +335,7 @@ public class SqlQueryTests  {
 			public CustomerQuery(DataSource ds) {
 				super(ds, SELECT_ID_FORENAME_WHERE);
 				declareParameter(new SqlParameter(Types.VARCHAR));
-				compile();
+				implementation();
 			}
 
 			@Override
@@ -373,7 +373,7 @@ public class SqlQueryTests  {
 				super(ds, SELECT_ID_WHERE);
 				declareParameter(new SqlParameter(Types.NUMERIC));
 				declareParameter(new SqlParameter(Types.NUMERIC));
-				compile();
+				implementation();
 			}
 
 			@Override
@@ -409,7 +409,7 @@ public class SqlQueryTests  {
 			public CustomerQuery(DataSource ds) {
 				super(ds, SELECT_ID_FORENAME_WHERE);
 				declareParameter(new SqlParameter(Types.VARCHAR));
-				compile();
+				implementation();
 			}
 
 			@Override
@@ -449,7 +449,7 @@ public class SqlQueryTests  {
 				super(ds, SELECT_ID_FORENAME_WHERE);
 				setResultSetType(ResultSet.TYPE_SCROLL_SENSITIVE);
 				declareParameter(new SqlParameter(Types.NUMERIC));
-				compile();
+				implementation();
 			}
 
 			@Override
@@ -484,7 +484,7 @@ public class SqlQueryTests  {
 				super(ds, SELECT_ID_FORENAME_WHERE);
 				setResultSetType(ResultSet.TYPE_SCROLL_SENSITIVE);
 				declareParameter(new SqlParameter(Types.NUMERIC));
-				compile();
+				implementation();
 			}
 
 			@Override
@@ -542,7 +542,7 @@ public class SqlQueryTests  {
 					declareParameter(new SqlParameter(Types.NUMERIC));
 					declareParameter(new SqlParameter(Types.VARCHAR));
 				}
-				compile();
+				implementation();
 			}
 
 			@Override
@@ -588,7 +588,7 @@ public class SqlQueryTests  {
 				super(ds, SELECT_ID_FORENAME_WHERE_ID_IN_LIST_2);
 				setResultSetType(ResultSet.TYPE_SCROLL_SENSITIVE);
 				declareParameter(new SqlParameter("ids", Types.NUMERIC));
-				compile();
+				implementation();
 			}
 
 			@Override
@@ -640,7 +640,7 @@ public class SqlQueryTests  {
 				super(ds, SELECT_ID_FORENAME_WHERE_ID_REUSED_2);
 				setResultSetType(ResultSet.TYPE_SCROLL_SENSITIVE);
 				declareParameter(new SqlParameter("id1", Types.NUMERIC));
-				compile();
+				implementation();
 			}
 
 			@Override
@@ -687,7 +687,7 @@ public class SqlQueryTests  {
 				super(ds, SELECT_ID_FORENAME_WHERE_ID_REUSED_1);
 				setResultSetType(ResultSet.TYPE_SCROLL_SENSITIVE);
 				declareParameter(new SqlParameter("id1", Types.NUMERIC));
-				compile();
+				implementation();
 			}
 
 			@Override
@@ -723,7 +723,7 @@ public class SqlQueryTests  {
 			public CustomerUpdateQuery(DataSource ds) {
 				super(ds, SELECT_ID_FORENAME_WHERE_ID);
 				declareParameter(new SqlParameter(Types.NUMERIC));
-				compile();
+				implementation();
 			}
 
 			@Override
@@ -752,7 +752,7 @@ public class SqlQueryTests  {
 
 		public StringQuery(DataSource ds, String sql) {
 			super(ds, sql);
-			compile();
+			implementation();
 		}
 
 		@Override

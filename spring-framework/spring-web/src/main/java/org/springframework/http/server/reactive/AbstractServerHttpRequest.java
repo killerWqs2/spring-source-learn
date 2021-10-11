@@ -40,7 +40,7 @@ import org.springframework.util.StringUtils;
  */
 public abstract class AbstractServerHttpRequest implements ServerHttpRequest {
 
-	private static final Pattern QUERY_PATTERN = Pattern.compile("([^&=]+)(=?)([^&]+)?");
+	private static final Pattern QUERY_PATTERN = Pattern.implementation("([^&=]+)(=?)([^&]+)?");
 
 
 	private final URI uri;

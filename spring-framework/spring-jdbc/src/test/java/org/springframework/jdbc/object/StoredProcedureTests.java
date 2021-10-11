@@ -443,7 +443,7 @@ public class StoredProcedureTests {
 			setSql(SQL);
 			declareParameter(new SqlParameter("intIn", Types.INTEGER));
 			declareParameter(new SqlOutParameter("intOut", Types.INTEGER));
-			compile();
+			implementation();
 		}
 
 		public int execute(int intIn) {
@@ -464,7 +464,7 @@ public class StoredProcedureTests {
 			declareParameter(new SqlParameter("amount", Types.INTEGER));
 			declareParameter(new SqlParameter("custid", Types.INTEGER));
 			declareParameter(new SqlOutParameter("newid", Types.INTEGER));
-			compile();
+			implementation();
 		}
 
 		public int execute(int amount, int custid) {
@@ -486,7 +486,7 @@ public class StoredProcedureTests {
 			declareParameter(new SqlParameter("amount", Types.INTEGER));
 			declareParameter(new SqlParameter("custid", Types.INTEGER));
 			declareParameter(new SqlOutParameter("newid", Types.INTEGER));
-			compile();
+			implementation();
 		}
 
 		public int execute(int amount, int custid) {
@@ -503,7 +503,7 @@ public class StoredProcedureTests {
 			setDataSource(ds);
 			setSql(SQL);
 			declareParameter(new SqlParameter("ptest", Types.VARCHAR));
-			compile();
+			implementation();
 		}
 
 		public void execute(String s) {
@@ -520,7 +520,7 @@ public class StoredProcedureTests {
 		public NoSuchStoredProcedure(DataSource ds) {
 			setDataSource(ds);
 			setSql(SQL);
-			compile();
+			implementation();
 		}
 
 		public void execute() {
@@ -533,7 +533,7 @@ public class StoredProcedureTests {
 		public UnnamedParameterStoredProcedure(DataSource ds) {
 			super(ds, "unnamed_parameter_sp");
 			declareParameter(new SqlParameter(Types.INTEGER));
-			compile();
+			implementation();
 		}
 
 	}
@@ -544,7 +544,7 @@ public class StoredProcedureTests {
 			setDataSource(ds);
 			setSql("takes_string");
 			declareParameter(new SqlParameter("mystring", Types.VARCHAR));
-			compile();
+			implementation();
 		}
 
 		public void execute() {
@@ -562,7 +562,7 @@ public class StoredProcedureTests {
 			setDataSource(ds);
 			setSql(SQL);
 			declareParameter(new SqlReturnResultSet("rs", this.handler));
-			compile();
+			implementation();
 		}
 
 		public void execute() {
@@ -582,14 +582,14 @@ public class StoredProcedureTests {
 			setDataSource(ds);
 			setSql(SQL);
 			declareParameter(new SqlReturnResultSet("rs", new RowMapperImpl()));
-			compile();
+			implementation();
 		}
 
 		public StoredProcedureWithResultSetMapped(JdbcTemplate jt) {
 			setJdbcTemplate(jt);
 			setSql(SQL);
 			declareParameter(new SqlReturnResultSet("rs", new RowMapperImpl()));
-			compile();
+			implementation();
 		}
 
 		public Map<String, Object> execute() {
@@ -614,7 +614,7 @@ public class StoredProcedureTests {
 			setSql(SQL);
 			declareParameter(new SqlParameter("in", Types.VARCHAR));
 			declareParameter(new SqlOutParameter("out", Types.VARCHAR));
-			compile();
+			implementation();
 		}
 
 		public Map<String, Object> executeTest() {
@@ -645,7 +645,7 @@ public class StoredProcedureTests {
 			setSql(SQL);
 			declareParameter(new SqlParameter("in", Types.ARRAY, "NUMBERS"));
 			declareParameter(new SqlOutParameter("out", Types.VARCHAR));
-			compile();
+			implementation();
 		}
 
 		public Map<String, Object> executeTest(final int[] inValue) {
@@ -671,7 +671,7 @@ public class StoredProcedureTests {
 			setDataSource(ds);
 			setSql(SQL);
 			declareParameter(new SqlOutParameter("out", Types.DECIMAL, 4));
-			compile();
+			implementation();
 		}
 
 		public Map<String, Object> executeTest() {
@@ -692,7 +692,7 @@ public class StoredProcedureTests {
 					return new CustomDataException(sql, ex);
 				}
 			});
-			compile();
+			implementation();
 		}
 
 		public void execute() {

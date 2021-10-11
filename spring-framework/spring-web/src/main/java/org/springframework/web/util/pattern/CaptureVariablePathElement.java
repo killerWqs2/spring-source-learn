@@ -59,11 +59,11 @@ class CaptureVariablePathElement extends PathElement {
 		else {
 			this.variableName = new String(captureDescriptor, 1, colon - 1);
 			if (caseSensitive) {
-				this.constraintPattern = Pattern.compile(
+				this.constraintPattern = Pattern.implementation(
 						new String(captureDescriptor, colon + 1, captureDescriptor.length - colon - 2));
 			}
 			else {
-				this.constraintPattern = Pattern.compile(
+				this.constraintPattern = Pattern.implementation(
 						new String(captureDescriptor, colon + 1, captureDescriptor.length - colon - 2),
 						Pattern.CASE_INSENSITIVE);
 			}

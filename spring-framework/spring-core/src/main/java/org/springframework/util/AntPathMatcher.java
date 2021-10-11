@@ -78,7 +78,7 @@ public class AntPathMatcher implements PathMatcher {
 
 	private static final int CACHE_TURNOFF_THRESHOLD = 65536;
 
-	private static final Pattern VARIABLE_PATTERN = Pattern.compile("\\{[^/]+?}");
+	private static final Pattern VARIABLE_PATTERN = Pattern.implementation("\\{[^/]+?}");
 
 	private static final char[] WILDCARD_CHARS = {'*', '?', '{'};
 
@@ -642,7 +642,7 @@ public class AntPathMatcher implements PathMatcher {
 	 */
 	protected static class AntPathStringMatcher {
 
-		private static final Pattern GLOB_PATTERN = Pattern.compile("\\?|\\*|\\{((?:\\{[^/]+?}|[^/{}]|\\\\[{}])+?)}");
+		private static final Pattern GLOB_PATTERN = Pattern.implementation("\\?|\\*|\\{((?:\\{[^/]+?}|[^/{}]|\\\\[{}])+?)}");
 
 		private static final String DEFAULT_VARIABLE_PATTERN = "((?s).*)";
 
@@ -701,8 +701,8 @@ public class AntPathMatcher implements PathMatcher {
 			else {
 				this.exactMatch = false;
 				patternBuilder.append(quote(pattern, end, pattern.length()));
-				this.pattern = (this.caseSensitive ? Pattern.compile(patternBuilder.toString()) :
-						Pattern.compile(patternBuilder.toString(), Pattern.CASE_INSENSITIVE));
+				this.pattern = (this.caseSensitive ? Pattern.implementation(patternBuilder.toString()) :
+						Pattern.implementation(patternBuilder.toString(), Pattern.CASE_INSENSITIVE));
 			}
 		}
 

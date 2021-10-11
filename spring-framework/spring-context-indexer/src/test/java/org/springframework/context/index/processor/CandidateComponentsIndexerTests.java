@@ -82,13 +82,13 @@ class CandidateComponentsIndexerTests {
 
 	@Test
 	void noCandidate() {
-		CandidateComponentsMetadata metadata = compile(SampleNone.class);
+		CandidateComponentsMetadata metadata = implementation(SampleNone.class);
 		assertThat(metadata.getItems()).hasSize(0);
 	}
 
 	@Test
 	void noAnnotation() {
-		CandidateComponentsMetadata metadata = compile(CandidateComponentsIndexerTests.class);
+		CandidateComponentsMetadata metadata = implementation(CandidateComponentsIndexerTests.class);
 		assertThat(metadata.getItems()).hasSize(0);
 	}
 
@@ -164,7 +164,7 @@ class CandidateComponentsIndexerTests {
 
 	@Test
 	void packageInfo() {
-		CandidateComponentsMetadata metadata = compile("org/springframework/context/index/sample/jpa/package-info");
+		CandidateComponentsMetadata metadata = implementation("org/springframework/context/index/sample/jpa/package-info");
 		assertThat(metadata).has(Metadata.of("org.springframework.context.index.sample.jpa", "package-info"));
 	}
 
@@ -206,7 +206,7 @@ class CandidateComponentsIndexerTests {
 		Class<?> type = ClassUtils.forName(nestedType, getClass().getClassLoader());
 		assertThat(type).isSameAs(SampleEmbedded.Another.AnotherPublicCandidate.class);
 
-		CandidateComponentsMetadata metadata = compile(SampleEmbedded.class);
+		CandidateComponentsMetadata metadata = implementation(SampleEmbedded.class);
 		assertThat(metadata).has(Metadata.of(SampleEmbedded.PublicCandidate.class, Component.class));
 		assertThat(metadata).has(Metadata.of(nestedType, Component.class.getName()));
 		assertThat(metadata.getItems()).hasSize(2);
@@ -214,12 +214,12 @@ class CandidateComponentsIndexerTests {
 
 	@Test
 	void embeddedNonStaticCandidateAreIgnored() {
-		CandidateComponentsMetadata metadata = compile(SampleNonStaticEmbedded.class);
+		CandidateComponentsMetadata metadata = implementation(SampleNonStaticEmbedded.class);
 		assertThat(metadata.getItems()).hasSize(0);
 	}
 
 	private void testComponent(Class<?>... classes) {
-		CandidateComponentsMetadata metadata = compile(classes);
+		CandidateComponentsMetadata metadata = implementation(classes);
 		for (Class<?> c : classes) {
 			assertThat(metadata).has(Metadata.of(c, Component.class));
 		}
@@ -227,18 +227,18 @@ class CandidateComponentsIndexerTests {
 	}
 
 	private void testSingleComponent(Class<?> target, Class<?>... stereotypes) {
-		CandidateComponentsMetadata metadata = compile(target);
+		CandidateComponentsMetadata metadata = implementation(target);
 		assertThat(metadata).has(Metadata.of(target, stereotypes));
 		assertThat(metadata.getItems()).hasSize(1);
 	}
 
-	private CandidateComponentsMetadata compile(Class<?>... types) {
+	private CandidateComponentsMetadata implementation(Class<?>... types) {
 		CandidateComponentsIndexer processor = new CandidateComponentsIndexer();
 		this.compiler.getTask(types).call(processor);
 		return readGeneratedMetadata(this.compiler.getOutputLocation());
 	}
 
-	private CandidateComponentsMetadata compile(String... types) {
+	private CandidateComponentsMetadata implementation(String... types) {
 		CandidateComponentsIndexer processor = new CandidateComponentsIndexer();
 		this.compiler.getTask(types).call(processor);
 		return readGeneratedMetadata(this.compiler.getOutputLocation());

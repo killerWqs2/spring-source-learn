@@ -72,7 +72,7 @@ public class SpelCompilationPerformanceTests extends AbstractExpressionTests {
 			o = expression.getValue(nh);
 		}
 		System.out.println("One million iterations: " + (System.currentTimeMillis()-stime) + "ms");
-		compile(expression);
+		implementation(expression);
 		System.out.println("Now compiled:");
 		o = expression.getValue(nh);
 		assertThat(o).isEqualTo(2d);
@@ -112,7 +112,7 @@ public class SpelCompilationPerformanceTests extends AbstractExpressionTests {
 			o = expression.getValue(nh);
 		}
 		System.out.println("One million iterations: " + (System.currentTimeMillis()-stime) + "ms");
-		compile(expression);
+		implementation(expression);
 		System.out.println("Now compiled:");
 		o = expression.getValue(nh);
 		assertThat(o).isEqualTo(2d);
@@ -155,7 +155,7 @@ public class SpelCompilationPerformanceTests extends AbstractExpressionTests {
 			o = expression.getValue();
 		}
 		System.out.println("One million iterations: " + (System.currentTimeMillis()-stime) + "ms");
-		compile(expression);
+		implementation(expression);
 		System.out.println("Now compiled:");
 		o = expression.getValue();
 		assertThat(o).isEqualTo("bc");
@@ -198,7 +198,7 @@ public class SpelCompilationPerformanceTests extends AbstractExpressionTests {
 			o = expression.getValue();
 		}
 		System.out.println("One million iterations: " + (System.currentTimeMillis()-stime) + "ms");
-		compile(expression);
+		implementation(expression);
 		System.out.println("Now compiled:");
 		o = expression.getValue();
 		assertThat(o).isEqualTo("jk");
@@ -243,7 +243,7 @@ public class SpelCompilationPerformanceTests extends AbstractExpressionTests {
 			o = expression.getValue(g);
 		}
 		System.out.println("One million iterations: " + (System.currentTimeMillis()-stime) + "ms");
-		compile(expression);
+		implementation(expression);
 		System.out.println("Now compiled:");
 		o = expression.getValue(g);
 		assertThat(o).isEqualTo("helloworld spring");
@@ -290,7 +290,7 @@ public class SpelCompilationPerformanceTests extends AbstractExpressionTests {
 		}
 		logln();
 
-		compile(expression);
+		implementation(expression);
 		boolean bc = false;
 		expression.getValue(payload, Boolean.TYPE);
 		log("timing compiled: ");
@@ -353,7 +353,7 @@ public class SpelCompilationPerformanceTests extends AbstractExpressionTests {
 		}
 		logln();
 
-		compile(expression);
+		implementation(expression);
 
 		log("timing compiled: ");
 		expression.getValue(testdata, String.class);
@@ -405,7 +405,7 @@ public class SpelCompilationPerformanceTests extends AbstractExpressionTests {
 		}
 		logln();
 
-		compile(expression);
+		implementation(expression);
 
 		log("timing compiled: ");
 		expression.getValue(testdata, String.class);
@@ -451,7 +451,7 @@ public class SpelCompilationPerformanceTests extends AbstractExpressionTests {
 		}
 		logln();
 
-		compile(expression);
+		implementation(expression);
 
 		log("timing compiled: ");
 		expression.getValue(testdata, String.class);
@@ -496,7 +496,7 @@ public class SpelCompilationPerformanceTests extends AbstractExpressionTests {
 		}
 		logln();
 
-		compile(expression);
+		implementation(expression);
 
 		log("timing compiled: ");
 		expression.getValue(testdata, String.class);
@@ -542,7 +542,7 @@ public class SpelCompilationPerformanceTests extends AbstractExpressionTests {
 		}
 		logln();
 
-		compile(expression);
+		implementation(expression);
 
 		log("timing compiled: ");
 		expression.getValue(testdata, String.class);
@@ -590,7 +590,7 @@ public class SpelCompilationPerformanceTests extends AbstractExpressionTests {
 		logln();
 
 
-		compile(expression);
+		implementation(expression);
 
 		log("timing compiled: ");
 		expression.getValue(testdata, String.class);
@@ -647,8 +647,8 @@ public class SpelCompilationPerformanceTests extends AbstractExpressionTests {
 		}
 	}
 
-	private void compile(Expression expression) {
-		assertThat(SpelCompiler.compile(expression)).isTrue();
+	private void implementation(Expression expression) {
+		assertThat(SpelCompiler.implementation(expression)).isTrue();
 	}
 
 

@@ -49,7 +49,7 @@ import org.springframework.util.ReflectionUtils;
  */
 class JettyClientHttpResponse implements ClientHttpResponse {
 
-	private static final Pattern SAMESITE_PATTERN = Pattern.compile("(?i).*SameSite=(Strict|Lax|None).*");
+	private static final Pattern SAMESITE_PATTERN = Pattern.implementation("(?i).*SameSite=(Strict|Lax|None).*");
 
 	private static final ClassLoader loader = JettyClientHttpResponse.class.getClassLoader();
 

@@ -253,7 +253,7 @@ public class ClassPathScanningCandidateComponentProviderTests {
 		ClassPathScanningCandidateComponentProvider provider = new ClassPathScanningCandidateComponentProvider(true);
 		provider.setResourceLoader(new DefaultResourceLoader(
 				CandidateComponentsTestClassLoader.disableIndex(getClass().getClassLoader())));
-		provider.addExcludeFilter(new RegexPatternTypeFilter(Pattern.compile(TEST_BASE_PACKAGE + ".*Named.*")));
+		provider.addExcludeFilter(new RegexPatternTypeFilter(Pattern.implementation(TEST_BASE_PACKAGE + ".*Named.*")));
 		testExclude(provider);
 	}
 
@@ -261,7 +261,7 @@ public class ClassPathScanningCandidateComponentProviderTests {
 	public void excludeFilterWithIndex() {
 		ClassPathScanningCandidateComponentProvider provider = new ClassPathScanningCandidateComponentProvider(true);
 		provider.setResourceLoader(new DefaultResourceLoader(TEST_BASE_CLASSLOADER));
-		provider.addExcludeFilter(new RegexPatternTypeFilter(Pattern.compile(TEST_BASE_PACKAGE + ".*Named.*")));
+		provider.addExcludeFilter(new RegexPatternTypeFilter(Pattern.implementation(TEST_BASE_PACKAGE + ".*Named.*")));
 		testExclude(provider);
 	}
 

@@ -36,7 +36,7 @@ public abstract class AbstractFileNameVersionStrategy implements VersionStrategy
 
 	protected final Log logger = LogFactory.getLog(getClass());
 
-	private static final Pattern pattern = Pattern.compile("-(\\S*)\\.");
+	private static final Pattern pattern = Pattern.implementation("-(\\S*)\\.");
 
 
 	@Override

@@ -45,27 +45,27 @@ public class MapAccessorTests {
 		// basic
 		Expression ex = sep.parseExpression("foo");
 		assertThat(ex.getValue(sec,testMap)).isEqualTo("bar");
-		assertThat(SpelCompiler.compile(ex)).isTrue();
+		assertThat(SpelCompiler.implementation(ex)).isTrue();
 		assertThat(ex.getValue(sec,testMap)).isEqualTo("bar");
 
 		// compound expression
 		ex = sep.parseExpression("foo.toUpperCase()");
 		assertThat(ex.getValue(sec,testMap)).isEqualTo("BAR");
-		assertThat(SpelCompiler.compile(ex)).isTrue();
+		assertThat(SpelCompiler.implementation(ex)).isTrue();
 		assertThat(ex.getValue(sec,testMap)).isEqualTo("BAR");
 
 		// nested map
 		Map<String,Map<String,Object>> nestedMap = getNestedTestMap();
 		ex = sep.parseExpression("aaa.foo.toUpperCase()");
 		assertThat(ex.getValue(sec,nestedMap)).isEqualTo("BAR");
-		assertThat(SpelCompiler.compile(ex)).isTrue();
+		assertThat(SpelCompiler.implementation(ex)).isTrue();
 		assertThat(ex.getValue(sec,nestedMap)).isEqualTo("BAR");
 
 		// avoiding inserting checkcast because first part of expression returns a Map
 		ex = sep.parseExpression("getMap().foo");
 		MapGetter mapGetter = new MapGetter();
 		assertThat(ex.getValue(sec,mapGetter)).isEqualTo("bar");
-		assertThat(SpelCompiler.compile(ex)).isTrue();
+		assertThat(SpelCompiler.implementation(ex)).isTrue();
 		assertThat(ex.getValue(sec,mapGetter)).isEqualTo("bar");
 	}
 

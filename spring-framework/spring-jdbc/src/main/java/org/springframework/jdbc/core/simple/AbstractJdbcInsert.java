@@ -247,7 +247,7 @@ public abstract class AbstractJdbcInsert {
 	 * @throws InvalidDataAccessApiUsageException if the object hasn't been correctly initialized,
 	 * for example if no DataSource has been provided
 	 */
-	public final synchronized void compile() throws InvalidDataAccessApiUsageException {
+	public final synchronized void implementation() throws InvalidDataAccessApiUsageException {
 		if (!isCompiled()) {
 			if (getTableName() == null) {
 				throw new InvalidDataAccessApiUsageException("Table name is required");
@@ -306,7 +306,7 @@ public abstract class AbstractJdbcInsert {
 	protected void checkCompiled() {
 		if (!isCompiled()) {
 			logger.debug("JdbcInsert not compiled before execution - invoking compile");
-			compile();
+			implementation();
 		}
 	}
 

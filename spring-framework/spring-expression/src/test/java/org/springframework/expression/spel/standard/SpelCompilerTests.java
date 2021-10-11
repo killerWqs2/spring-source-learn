@@ -60,17 +60,17 @@ class SpelCompilerTests {
 		context.setRootObject(item);
 
 		Expression expression = parser.parseExpression("#root.isEditable2()");
-		assertThat(SpelCompiler.compile(expression)).isFalse();
+		assertThat(SpelCompiler.implementation(expression)).isFalse();
 		assertThat(expression.getValue(context)).isEqualTo(false);
-		assertThat(SpelCompiler.compile(expression)).isTrue();
+		assertThat(SpelCompiler.implementation(expression)).isTrue();
 		SpelCompilationCoverageTests.assertIsCompiled(expression);
 		assertThat(expression.getValue(context)).isEqualTo(false);
 
 		context.setVariable("user", new User());
 		expression = parser.parseExpression("#root.isEditable(#user)");
-		assertThat(SpelCompiler.compile(expression)).isFalse();
+		assertThat(SpelCompiler.implementation(expression)).isFalse();
 		assertThat(expression.getValue(context)).isEqualTo(true);
-		assertThat(SpelCompiler.compile(expression)).isTrue();
+		assertThat(SpelCompiler.implementation(expression)).isTrue();
 		SpelCompilationCoverageTests.assertIsCompiled(expression);
 		assertThat(expression.getValue(context)).isEqualTo(true);
 	}

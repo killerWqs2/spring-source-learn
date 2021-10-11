@@ -95,7 +95,7 @@ public class JdkRegexpMethodPointcut extends AbstractRegexpMethodPointcut {
 	private Pattern[] compilePatterns(String[] source) throws PatternSyntaxException {
 		Pattern[] destination = new Pattern[source.length];
 		for (int i = 0; i < source.length; i++) {
-			destination[i] = Pattern.compile(source[i]);
+			destination[i] = Pattern.implementation(source[i]);
 		}
 		return destination;
 	}

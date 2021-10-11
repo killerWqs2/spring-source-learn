@@ -79,7 +79,7 @@ public class XpathExpectationsHelper {
 		namespaceContext.setBindings(namespaces != null ? namespaces : Collections.emptyMap());
 		XPath xpath = XPathFactory.newInstance().newXPath();
 		xpath.setNamespaceContext(namespaceContext);
-		return xpath.compile(expression);
+		return xpath.implementation(expression);
 	}
 
 

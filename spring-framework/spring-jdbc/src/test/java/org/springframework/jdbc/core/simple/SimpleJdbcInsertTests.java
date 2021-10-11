@@ -100,7 +100,7 @@ class SimpleJdbcInsertTests {
 		given(columnResultSet.getBoolean("NULLABLE")).willReturn(false);
 
 		SimpleJdbcInsert insert = new SimpleJdbcInsert(dataSource).withTableName("me");
-		insert.compile();
+		insert.implementation();
 		assertThat(insert.getInsertString()).isEqualTo("INSERT INTO me (col1, col2) VALUES(?, ?)");
 
 		verify(columnResultSet).close();

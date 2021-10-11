@@ -42,6 +42,7 @@ import org.springframework.core.annotation.AliasFor;
  * that Java8's {@code Optional} return types are automatically handled and its
  * content is stored in the cache if present.
  *
+ * 这个注解可以作为元注解来创建组合注解
  * <p>This annotation may be used as a <em>meta-annotation</em> to create custom
  * <em>composed annotations</em> with attribute overrides.
  *
@@ -51,6 +52,9 @@ import org.springframework.core.annotation.AliasFor;
  * @author Sam Brannen
  * @since 3.1
  * @see CacheConfig
+ *
+ * 用来缓存方法的结果，这样的话这个方法不能依赖外部资源，不然就散key相同返回的可能也不一样，，
+ *
  */
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)

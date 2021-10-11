@@ -60,7 +60,7 @@ import org.springframework.util.StringUtils;
  * for an associated SpelExpressionParser (through the {@link SpelParserConfiguration}
  * object), it is not on by default.
  *
- * <p>Individual expressions can be compiled by calling {@code SpelCompiler.compile(expression)}.
+ * <p>Individual expressions can be compiled by calling {@code SpelCompiler.implementation(expression)}.
  *
  * @author Andy Clement
  * @author Juergen Hoeller
@@ -99,7 +99,7 @@ public final class SpelCompiler implements Opcodes {
 	 * or {@code null} if compilation is not possible
 	 */
 	@Nullable
-	public CompiledExpression compile(SpelNodeImpl expression) {
+	public CompiledExpression implementation(SpelNodeImpl expression) {
 		if (expression.isCompilable()) {
 			if (logger.isDebugEnabled()) {
 				logger.debug("SpEL: compiling " + expression.toStringAST());
@@ -250,7 +250,7 @@ public final class SpelCompiler implements Opcodes {
 	 * @return {@code true} if the expression was successfully compiled,
 	 * {@code false} otherwise
 	 */
-	public static boolean compile(Expression expression) {
+	public static boolean implementation(Expression expression) {
 		return (expression instanceof SpelExpression && ((SpelExpression) expression).compileExpression());
 	}
 

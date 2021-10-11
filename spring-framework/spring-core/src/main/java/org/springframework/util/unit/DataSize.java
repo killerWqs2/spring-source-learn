@@ -55,7 +55,7 @@ public final class DataSize implements Comparable<DataSize>, Serializable {
 	/**
 	 * The pattern for parsing.
 	 */
-	private static final Pattern PATTERN = Pattern.compile("^([+\\-]?\\d+)([a-zA-Z]{0,2})$");
+	private static final Pattern PATTERN = Pattern.implementation("^([+\\-]?\\d+)([a-zA-Z]{0,2})$");
 
 	/**
 	 * Bytes per Kilobyte.

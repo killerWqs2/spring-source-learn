@@ -288,6 +288,7 @@ configure(allprojects) { project ->
 			cacheChangingModulesFor 0, "seconds"
 		}
 		repositories {
+			maven{ url 'https://maven.aliyun.com/repository/public'}
 			mavenCentral()
 			maven { url "https://repo.spring.io/libs-spring-framework-build" }
 		}
@@ -341,18 +342,18 @@ configure([rootProject] + javaProjects) { project ->
 	}
 
 	dependencies {
-		testCompile("org.junit.jupiter:junit-jupiter-api")
-		testCompile("org.junit.jupiter:junit-jupiter-params")
-		testCompile("org.mockito:mockito-core")
-		testCompile("org.mockito:mockito-junit-jupiter")
-		testCompile("io.mockk:mockk")
-		testCompile("org.assertj:assertj-core")
-		// Pull in the latest JUnit 5 Launcher API to ensure proper support in IDEs.
-		testRuntime("org.junit.platform:junit-platform-launcher")
-		testRuntime("org.junit.jupiter:junit-jupiter-engine")
-		testRuntime("org.apache.logging.log4j:log4j-core")
-		testRuntime("org.apache.logging.log4j:log4j-slf4j-impl")
-		testRuntime("org.apache.logging.log4j:log4j-jul")
+//		testImplementation("org.junit.jupiter:junit-jupiter-api")
+//		testImplementation("org.junit.jupiter:junit-jupiter-params")
+//		testImplementation("org.mockito:mockito-core")
+//		testImplementation("org.mockito:mockito-junit-jupiter")
+//		testImplementation("io.mockk:mockk")
+//		testImplementation("org.assertj:assertj-core")
+//		// Pull in the latest JUnit 5 Launcher API to ensure proper support in IDEs.
+//		testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+//		testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+//		testRuntimeOnly("org.apache.logging.log4j:log4j-core")
+//		testRuntimeOnly("org.apache.logging.log4j:log4j-slf4j-impl")
+//		testRuntimeOnly("org.apache.logging.log4j:log4j-jul")
 		// JSR-305 only used for non-required meta-annotations
 		compileOnly("com.google.code.findbugs:jsr305")
 		testCompileOnly("com.google.code.findbugs:jsr305")
@@ -419,5 +420,11 @@ configure(rootProject) {
 				artifact distZip
 			}
 		}
+	}
+}
+
+task hello {
+	doLast {
+		println "hello world"
 	}
 }

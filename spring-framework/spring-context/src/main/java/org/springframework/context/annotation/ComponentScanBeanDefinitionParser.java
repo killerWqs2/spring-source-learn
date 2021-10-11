@@ -244,7 +244,7 @@ public class ComponentScanBeanDefinitionParser implements BeanDefinitionParser {
 			return new AspectJTypeFilter(expression, classLoader);
 		}
 		else if ("regex".equals(filterType)) {
-			return new RegexPatternTypeFilter(Pattern.compile(expression));
+			return new RegexPatternTypeFilter(Pattern.implementation(expression));
 		}
 		else if ("custom".equals(filterType)) {
 			Class<?> filterClass = ClassUtils.forName(expression, classLoader);
