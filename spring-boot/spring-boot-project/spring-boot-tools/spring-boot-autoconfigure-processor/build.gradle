@@ -14,3 +14,5 @@ dependencies {
 	testImplementation("org.springframework:spring-core")
 	testImplementation("org.junit.jupiter:junit-jupiter")
 }
+
+// 忽然有一个疑惑，就是这个gradle文件是groovy编写的吗？？plugins dependencies?
